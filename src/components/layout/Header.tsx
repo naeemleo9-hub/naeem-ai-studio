@@ -25,7 +25,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 glass-effect border-b border-border">
+    <header className="sticky top-4 z-50 glass-effect border-b border-border mx-4 rounded-2xl">
       <nav className="container-custom" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
