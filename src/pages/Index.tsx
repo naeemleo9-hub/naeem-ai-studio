@@ -60,12 +60,15 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={heroBanner}
+            srcSet={`${heroBanner} 1504w`}
+            sizes="100vw"
             alt="Naeem Online Store - Digital innovation and AI technology"
             className="w-full h-full object-cover"
             width={1504}
             height={846}
             loading="eager"
             fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
         </div>
@@ -208,11 +211,14 @@ const Index = () => {
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={aiFeature}
+                  srcSet={`${aiFeature} 584w`}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   alt="AI-powered design customization interface"
                   className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                   width={584}
                   height={374}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-2xl bg-gradient-to-br from-google-blue to-google-sky flex items-center justify-center shadow-xl animate-float">
@@ -237,11 +243,14 @@ const Index = () => {
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={productDigestor}
+                  srcSet={`${productDigestor} 584w`}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   alt="Digistore 24 - Premium digital productivity software"
                   className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                   width={584}
                   height={584}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>
@@ -318,11 +327,14 @@ const Index = () => {
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={toolsHub}
+                  srcSet={`${toolsHub} 584w`}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   alt="Free online tools collection for file conversion and editing"
                   className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                   width={584}
-                  height={374}
+                  height={584}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>
