@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, Wrench, ShoppingBag, Star, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/layout/Layout';
-import heroBanner from '@/assets/hero-banner.jpg';
+// Hero banner is served from public folder for LCP discoverability
+const heroBanner = '/images/hero-banner.jpg';
 import aiFeature from '@/assets/ai-feature.jpg';
 import toolsHub from '@/assets/tools-hub.jpg';
 import productDigestor from '@/assets/product-digestor.jpg';
@@ -50,7 +51,7 @@ const Index = () => {
         <title>Naeem Online Store - AI-Powered Digital Products & Free Tools</title>
         <meta name="description" content="Discover AI-powered digital products, Digistore 24 solutions, and free online tools at Naeem Online Store. Your destination for innovative digital solutions." />
         <link rel="canonical" href="https://naeemonlinestore.com" />
-        <link rel="preload" as="image" href={heroBanner} fetchPriority="high" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
