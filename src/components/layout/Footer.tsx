@@ -115,7 +115,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Naeem Online Store. All rights reserved.
           </p>
           <p className="text-primary-foreground/60 text-sm">
-            Powered by AI Innovation
+            Empowering Digital Success
           </p>
         </div>
       </div>
