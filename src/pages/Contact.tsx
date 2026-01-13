@@ -120,6 +120,26 @@ const Contact = () => {
     ]
   };
 
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Naeem Online Store",
+    "description": "Get in touch with Naeem Online Store for support, inquiries, or feedback.",
+    "url": "https://naeemonlinestore.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Naeem Online Store",
+      "email": "support@naeemonlinestore.com",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=100088800220083",
+        "https://www.instagram.com/naeemonlinestore/",
+        "https://youtube.com/@naeemonlinestore5053",
+        "https://www.linkedin.com/groups/9399204",
+        "https://twitter.com/Naeem0nlineStor"
+      ]
+    }
+  };
+
   return (
     <Layout>
       <Helmet>
@@ -131,6 +151,7 @@ const Contact = () => {
         <meta property="og:url" content="https://naeemonlinestore.com/contact" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(contactPageSchema)}</script>
       </Helmet>
 
       {/* Hero Section */}
