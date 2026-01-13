@@ -3,12 +3,37 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 
 const Terms = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://naeemonlinestore.com" },
+      { "@type": "ListItem", "position": 2, "name": "Terms and Conditions", "item": "https://naeemonlinestore.com/terms" }
+    ]
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms and Conditions",
+    "description": "Rules and regulations governing the use of Naeem Online Store website and services.",
+    "url": "https://naeemonlinestore.com/terms",
+    "dateModified": "2026-01-06",
+    "publisher": { "@type": "Organization", "name": "Naeem Online Store" }
+  };
+
   return (
     <Layout>
       <Helmet>
         <title>Terms and Conditions | Naeem Online Store</title>
         <meta name="description" content="Read Naeem Online Store's terms and conditions. Understand the rules and regulations governing the use of our website and services." />
         <link rel="canonical" href="https://naeemonlinestore.com/terms" />
+        <meta property="og:title" content="Terms and Conditions | Naeem Online Store" />
+        <meta property="og:description" content="Rules and regulations governing the use of our website and services." />
+        <meta property="og:url" content="https://naeemonlinestore.com/terms" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>
       </Helmet>
 
       {/* Hero Section */}

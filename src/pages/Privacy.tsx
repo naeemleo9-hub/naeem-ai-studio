@@ -3,12 +3,37 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 
 const Privacy = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://naeemonlinestore.com" },
+      { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://naeemonlinestore.com/privacy" }
+    ]
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "description": "Learn how Naeem Online Store collects, uses, and protects your personal information.",
+    "url": "https://naeemonlinestore.com/privacy",
+    "dateModified": "2026-01-06",
+    "publisher": { "@type": "Organization", "name": "Naeem Online Store" }
+  };
+
   return (
     <Layout>
       <Helmet>
         <title>Privacy Policy | Naeem Online Store</title>
         <meta name="description" content="Read Naeem Online Store's privacy policy. Learn how we collect, use, and protect your personal information." />
         <link rel="canonical" href="https://naeemonlinestore.com/privacy" />
+        <meta property="og:title" content="Privacy Policy | Naeem Online Store" />
+        <meta property="og:description" content="Learn how we collect, use, and protect your personal information." />
+        <meta property="og:url" content="https://naeemonlinestore.com/privacy" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>
       </Helmet>
 
       {/* Hero Section */}

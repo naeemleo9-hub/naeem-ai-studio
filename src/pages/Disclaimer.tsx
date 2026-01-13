@@ -3,12 +3,37 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 
 const Disclaimer = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://naeemonlinestore.com" },
+      { "@type": "ListItem", "position": 2, "name": "Disclaimer", "item": "https://naeemonlinestore.com/disclaimer" }
+    ]
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Disclaimer",
+    "description": "Limitations and conditions regarding the use of Naeem Online Store website content and services.",
+    "url": "https://naeemonlinestore.com/disclaimer",
+    "dateModified": "2026-01-06",
+    "publisher": { "@type": "Organization", "name": "Naeem Online Store" }
+  };
+
   return (
     <Layout>
       <Helmet>
         <title>Disclaimer | Naeem Online Store</title>
         <meta name="description" content="Read Naeem Online Store's disclaimer. Understand the limitations and conditions regarding the use of our website content and services." />
         <link rel="canonical" href="https://naeemonlinestore.com/disclaimer" />
+        <meta property="og:title" content="Disclaimer | Naeem Online Store" />
+        <meta property="og:description" content="Limitations and conditions regarding the use of our website content and services." />
+        <meta property="og:url" content="https://naeemonlinestore.com/disclaimer" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>
       </Helmet>
 
       {/* Hero Section */}

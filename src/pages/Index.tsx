@@ -32,6 +32,45 @@ const features = [
 ];
 
 const Index = () => {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Naeem Online Store",
+    "url": "https://naeemonlinestore.com",
+    "logo": "https://naeemonlinestore.com/og-image.png",
+    "description": "Your one-stop destination for AI-powered digital products, Digistore 24 solutions, and free online tools.",
+    "foundingDate": "2023",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=100088800220083",
+      "https://www.instagram.com/naeemonlinestore/",
+      "https://youtube.com/@naeemonlinestore5053",
+      "https://www.linkedin.com/groups/9399204",
+      "https://twitter.com/Naeem0nlineStor"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "url": "https://naeemonlinestore.com/contact"
+    }
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Naeem Online Store",
+    "url": "https://naeemonlinestore.com",
+    "description": "AI-powered digital products, Digistore 24 solutions, and 40+ free online tools.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Naeem Online Store"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://naeemonlinestore.com/tools?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -51,7 +90,12 @@ const Index = () => {
         <title>Naeem Online Store - AI-Powered Digital Products & Free Tools</title>
         <meta name="description" content="Discover AI-powered digital products, Digistore 24 solutions, and free online tools at Naeem Online Store. Your destination for innovative digital solutions." />
         <link rel="canonical" href="https://naeemonlinestore.com" />
-        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <meta property="og:title" content="Naeem Online Store - AI-Powered Digital Products & Free Tools" />
+        <meta property="og:description" content="Discover AI-powered digital products, Digistore 24 solutions, and free online tools." />
+        <meta property="og:url" content="https://naeemonlinestore.com" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
