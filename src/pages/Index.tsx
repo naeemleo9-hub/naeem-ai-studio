@@ -4,13 +4,15 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, Wrench, ShoppingBag, Star, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/layout/Layout';
+import { EditableText } from '@/components/cms/EditableText';
+import { useSiteContent } from '@/hooks/useSiteContent';
 // Hero banner is served from public folder for LCP discoverability
 const heroBanner = '/images/hero-banner.jpg';
 import aiFeature from '@/assets/ai-feature.jpg';
 import toolsHub from '@/assets/tools-hub.jpg';
 import productDigestor from '@/assets/product-digestor.jpg';
 
-const features = [
+const defaultFeatures = [
   {
     icon: Sparkles,
     title: 'AI-Powered Design',
@@ -32,6 +34,37 @@ const features = [
 ];
 
 const Index = () => {
+  const { getContentValue, updateContent, isLoading } = useSiteContent('home');
+
+  // Default content values
+  const heroTagline = getContentValue('hero', 'tagline', 'AI-Powered Experience');
+  const heroTitle = getContentValue('hero', 'title', 'Welcome to');
+  const heroBrand = getContentValue('hero', 'brand', 'Naeem Online Store');
+  const heroDescription = getContentValue('hero', 'description', 'Your one-stop destination for AI-powered digital products, Digistore 24 solutions, and a comprehensive suite of free online tools.');
+  
+  const featuresTitle = getContentValue('features', 'title', 'Why Choose Us?');
+  const featuresSubtitle = getContentValue('features', 'subtitle', 'Experience the future of digital commerce with our AI-driven platform');
+  
+  const aiSectionLabel = getContentValue('ai-section', 'label', 'AI Design Capabilities');
+  const aiSectionTitle = getContentValue('ai-section', 'title', 'Personalize Your Experience with AI');
+  const aiSectionDescription = getContentValue('ai-section', 'description', 'Our intelligent AI system allows you to customize colors, layouts, and styles with a single click. Experience a truly personalized shopping journey.');
+  
+  const digestorLabel = getContentValue('digestor-section', 'label', 'Featured Product');
+  const digestorTitle = getContentValue('digestor-section', 'title', 'Digistore 24');
+  const digestorDescription = getContentValue('digestor-section', 'description', 'Our flagship digital product designed to streamline your workflow and boost productivity. Experience the power of intelligent automation.');
+  
+  const toolsLabel = getContentValue('tools-section', 'label', 'Free Resources');
+  const toolsTitle = getContentValue('tools-section', 'title', 'Multi Tools Hub');
+  const toolsDescription = getContentValue('tools-section', 'description', "Access our comprehensive suite of free online tools. From file converters to image editors, we've got everything you need.");
+  
+  const ctaTitle = getContentValue('cta', 'title', 'Ready to Get Started?');
+  const ctaDescription = getContentValue('cta', 'description', 'Join thousands of satisfied customers who have transformed their digital experience with Naeem Online Store.');
+
+  const handleSave = async (section: string, field: string, value: string) => {
+    const currentContent = {};
+    await updateContent(section, { ...currentContent, [field]: value });
+  };
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -84,6 +117,16 @@ const Index = () => {
     ]
   };
 
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <Helmet>
@@ -127,7 +170,10 @@ const Index = () => {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
                 <Sparkles className="w-4 h-4" />
-                AI-Powered Experience
+                <EditableText
+                  value={heroTagline}
+                  onSave={(value) => handleSave('hero', 'tagline', value)}
+                />
               </span>
             </motion.div>
 
@@ -137,18 +183,31 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6"
             >
-              Welcome to{' '}
-              <span className="text-gradient">Naeem Online Store</span>
+              <EditableText
+                value={heroTitle}
+                onSave={(value) => handleSave('hero', 'title', value)}
+              />{' '}
+              <span className="text-gradient">
+                <EditableText
+                  value={heroBrand}
+                  onSave={(value) => handleSave('hero', 'brand', value)}
+                />
+              </span>
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg sm:text-xl text-muted-foreground mb-8"
             >
-              Your one-stop destination for AI-powered digital products, Digistore 24 solutions, and a comprehensive suite of free online tools.
-            </motion.p>
+              <EditableText
+                value={heroDescription}
+                onSave={(value) => handleSave('hero', 'description', value)}
+                as="p"
+                multiline
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -184,15 +243,22 @@ const Index = () => {
             className="text-center max-w-2xl mx-auto mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
-              Why Choose Us?
+              <EditableText
+                value={featuresTitle}
+                onSave={(value) => handleSave('features', 'title', value)}
+              />
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Experience the future of digital commerce with our AI-driven platform
-            </p>
+            <div className="text-muted-foreground text-lg">
+              <EditableText
+                value={featuresSubtitle}
+                onSave={(value) => handleSave('features', 'subtitle', value)}
+                as="p"
+              />
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {features.map((feature, index) => (
+            {defaultFeatures.map((feature, index) => (
               <motion.article
                 key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -222,13 +288,26 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-google-blue font-medium mb-4 block">AI Design Capabilities</span>
+              <span className="text-google-blue font-medium mb-4 block">
+                <EditableText
+                  value={aiSectionLabel}
+                  onSave={(value) => handleSave('ai-section', 'label', value)}
+                />
+              </span>
               <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
-                Personalize Your Experience with AI
+                <EditableText
+                  value={aiSectionTitle}
+                  onSave={(value) => handleSave('ai-section', 'title', value)}
+                />
               </h2>
-              <p className="text-muted-foreground text-lg mb-6">
-                Our intelligent AI system allows you to customize colors, layouts, and styles with a single click. Experience a truly personalized shopping journey.
-              </p>
+              <div className="text-muted-foreground text-lg mb-6">
+                <EditableText
+                  value={aiSectionDescription}
+                  onSave={(value) => handleSave('ai-section', 'description', value)}
+                  as="p"
+                  multiline
+                />
+              </div>
               <ul className="space-y-4 mb-8">
                 {['Instant color palette switching', 'Smart layout optimization', 'Personalized recommendations'].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
@@ -307,13 +386,26 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="order-1 lg:order-2"
             >
-              <span className="text-google-red font-medium mb-4 block">Featured Product</span>
+              <span className="text-google-red font-medium mb-4 block">
+                <EditableText
+                  value={digestorLabel}
+                  onSave={(value) => handleSave('digestor-section', 'label', value)}
+                />
+              </span>
               <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
-                Digistore 24
+                <EditableText
+                  value={digestorTitle}
+                  onSave={(value) => handleSave('digestor-section', 'title', value)}
+                />
               </h2>
-              <p className="text-muted-foreground text-lg mb-6">
-                Our flagship digital product designed to streamline your workflow and boost productivity. Experience the power of intelligent automation.
-              </p>
+              <div className="text-muted-foreground text-lg mb-6">
+                <EditableText
+                  value={digestorDescription}
+                  onSave={(value) => handleSave('digestor-section', 'description', value)}
+                  as="p"
+                  multiline
+                />
+              </div>
               <div className="flex flex-wrap gap-3 mb-8">
                 {['Premium Quality', 'Instant Access', '24/7 Support'].map((tag) => (
                   <span key={tag} className="px-4 py-2 rounded-full bg-google-yellow/10 text-google-orange text-sm font-medium">
@@ -341,13 +433,26 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-google-green font-medium mb-4 block">Free Resources</span>
+              <span className="text-google-green font-medium mb-4 block">
+                <EditableText
+                  value={toolsLabel}
+                  onSave={(value) => handleSave('tools-section', 'label', value)}
+                />
+              </span>
               <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
-                Multi Tools Hub
+                <EditableText
+                  value={toolsTitle}
+                  onSave={(value) => handleSave('tools-section', 'title', value)}
+                />
               </h2>
-              <p className="text-muted-foreground text-lg mb-6">
-                Access our comprehensive suite of free online tools. From file converters to image editors, we've got everything you need.
-              </p>
+              <div className="text-muted-foreground text-lg mb-6">
+                <EditableText
+                  value={toolsDescription}
+                  onSave={(value) => handleSave('tools-section', 'description', value)}
+                  as="p"
+                  multiline
+                />
+              </div>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {['PDF Tools', 'Image Editors', 'Video Tools', 'Text Utilities', 'Calculators', 'Converters'].map((tool) => (
                   <div key={tool} className="flex items-center gap-2 text-sm">
@@ -397,11 +502,19 @@ const Index = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
-              Ready to Get Started?
+              <EditableText
+                value={ctaTitle}
+                onSave={(value) => handleSave('cta', 'title', value)}
+              />
             </h2>
-            <p className="text-primary-foreground/70 text-lg mb-8 max-w-xl mx-auto">
-              Join thousands of satisfied customers who have transformed their digital experience with Naeem Online Store.
-            </p>
+            <div className="text-primary-foreground/70 text-lg mb-8 max-w-xl mx-auto">
+              <EditableText
+                value={ctaDescription}
+                onSave={(value) => handleSave('cta', 'description', value)}
+                as="p"
+                multiline
+              />
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="xl" variant="hero">
                 <Link to="/shop">

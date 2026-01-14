@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Facebook, Instagram, Youtube, Linkedin, Twitter, Sparkles } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Youtube, Linkedin, Twitter, Sparkles, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '@/contexts/AuthContext';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -23,6 +24,7 @@ const socialLinks = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, isAdmin } = useAuth();
 
   return (
     <header className="sticky top-4 z-50 glass-effect border-b border-border mx-4 rounded-2xl">
@@ -72,6 +74,21 @@ const Header = () => {
                 </a>
               ))}
             </div>
+
+            {/* Auth Link */}
+            {!user && (
+              <Link to="/auth">
+                <Button variant="outline" size="sm">
+                  <User className="w-4 h-4 mr-2" />
+                  Admin Login
+                </Button>
+              </Link>
+            )}
+            {user && isAdmin && (
+              <span className="text-xs px-2 py-1 bg-google-green/10 text-google-green rounded-full font-medium">
+                Admin Mode
+              </span>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -112,6 +129,17 @@ const Header = () => {
                     {link.name}
                   </Link>
                 ))}
+                
+                {/* Admin Login for Mobile */}
+                {!user && (
+                  <Link
+                    to="/auth"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block px-4 py-3 rounded-lg font-medium text-foreground hover:bg-secondary"
+                  >
+                    Admin Login
+                  </Link>
+                )}
                 
                 {/* Mobile Social Links */}
                 <div className="flex items-center justify-center gap-4 pt-4 border-t border-border">
