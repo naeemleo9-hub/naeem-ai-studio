@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import FloatingContactButtons from './FloatingContactButtons';
 import AICustomizer from '../ai/AICustomizer';
 import { AdminBar } from '../cms/AdminBar';
 import { EditModeToggle } from '../cms/EditModeToggle';
@@ -20,6 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Footer />
       <AICustomizer />
       <EditModeToggle />
+      <FloatingContactButtons />
     </div>
   );
 };
