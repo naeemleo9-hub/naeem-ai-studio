@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, MessageSquare, Clock, Facebook, Instagram, Youtube, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Send, MessageSquare, Clock, Facebook, Instagram, Youtube, Linkedin, Twitter, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -202,7 +202,24 @@ const Contact = () => {
 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-google-green/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-google-green" />
+                    <Phone className="w-5 h-5 text-google-green" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">WhatsApp</h3>
+                    <a 
+                      href="https://wa.me/923417600835" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-google-green transition-colors"
+                    >
+                      +92 341 7600835
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-google-blue/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-google-blue" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
