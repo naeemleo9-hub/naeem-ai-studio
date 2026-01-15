@@ -97,13 +97,18 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-primary-foreground/70">
+              <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-google-blue" />
-                <span>contact@naeemonlinestore.com</span>
+                <a 
+                  href="mailto:naeemleo9@gmail.com" 
+                  className="text-primary-foreground/70 hover:text-google-yellow transition-colors duration-300"
+                >
+                  naeemleo9@gmail.com
+                </a>
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70">
                 <MapPin className="w-4 h-4 text-google-red mt-1" />
-                <span>Serving customers worldwide</span>
+                <span>Duki, Baluchistan, Pakistan</span>
               </li>
             </ul>
           </div>
