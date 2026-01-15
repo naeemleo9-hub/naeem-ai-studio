@@ -129,7 +129,7 @@ const Contact = () => {
     "mainEntity": {
       "@type": "Organization",
       "name": "Naeem Online Store",
-      "email": "support@naeemonlinestore.com",
+      "email": "naeemleo9@gmail.com",
       "sameAs": [
         "https://www.facebook.com/profile.php?id=100088800220083",
         "https://www.instagram.com/naeemonlinestore/",
@@ -194,7 +194,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email Us</h3>
-                    <p className="text-muted-foreground">contact@naeemonlinestore.com</p>
+                    <a href="mailto:naeemleo9@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      naeemleo9@gmail.com
+                    </a>
                   </div>
                 </div>
 
