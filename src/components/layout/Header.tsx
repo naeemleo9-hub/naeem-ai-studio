@@ -14,11 +14,11 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/profile.php?id=100088800220083' },
-  { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/naeemonlinestore/' },
-  { name: 'YouTube', icon: Youtube, url: 'https://youtube.com/@naeemonlinestore5053?si=Kh41ez6oK91nzFo7' },
-  { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/groups/9399204' },
-  { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/Naeem0nlineStor?t=iXbbel_JVdoM90qank0LDQ&s=09' },
+  { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/profile.php?id=100088800220083', color: 'text-blue-500 hover:text-blue-400' },
+  { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/naeemonlinestore/', color: 'text-pink-500 hover:text-pink-400' },
+  { name: 'YouTube', icon: Youtube, url: 'https://youtube.com/@naeemonlinestore5053?si=Kh41ez6oK91nzFo7', color: 'text-red-500 hover:text-red-400' },
+  { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/groups/9399204', color: 'text-sky-500 hover:text-sky-400' },
+  { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/Naeem0nlineStor?t=iXbbel_JVdoM90qank0LDQ&s=09', color: 'text-cyan-400 hover:text-cyan-300' },
 ];
 
 const Header = () => {
@@ -67,7 +67,7 @@ const Header = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-secondary transition-all duration-300"
+                  className={`p-2 rounded-full hover:bg-secondary transition-all duration-300 ${social.color}`}
                   aria-label={social.name}
                 >
                   <social.icon className="w-4 h-4" />
@@ -125,7 +125,7 @@ const Header = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-secondary text-foreground hover:text-primary transition-all duration-300"
+                      className={`p-3 rounded-full bg-secondary transition-all duration-300 ${social.color}`}
                       aria-label={social.name}
                     >
                       <social.icon className="w-5 h-5" />
