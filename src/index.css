@@ -148,6 +148,12 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
   }
 
   h1, h2, h3, h4, h5, h6 {
